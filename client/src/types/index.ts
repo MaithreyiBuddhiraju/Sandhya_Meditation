@@ -29,3 +29,17 @@ export interface JournalEntryWithPairing extends JournalEntry {
   stoic_concept: string | null;
   verse_ref: string | null;
 }
+
+export type DiyaState = "lit" | "grace" | "missed" | "future";
+
+export interface DayState {
+  date: string;
+  state: DiyaState;
+  isToday: boolean;
+}
+
+export interface StreakSummary {
+  current_streak: number;
+  longest_streak: number;
+  week: DayState[];
+}
