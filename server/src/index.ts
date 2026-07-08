@@ -1,6 +1,8 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { seedPairings } from "./db/seed/seedPairings.js";
 import { aiRouter } from "./routes/ai.js";
 import { journalRouter } from "./routes/journal.js";
@@ -28,6 +30,17 @@ app.use("/api/thoughts", thoughtsRouter);
 app.use("/api/settings", settingsRouter);
 app.use("/api/ai", aiRouter);
 
-app.listen(port, () => {
-  console.log(`Sandhya server listening on http://localhost:${port}`);
+// Production mode: serve the built client (npm run build) alongside the API,
+// so a phone on the same network only needs one address and one port.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const clientDist = path.join(__dirname, "..", "..", "client", "dist");
+app.use(express.static(clientDist));
+app.get(/^(?!\/api).*/, (_req, res) => {
+  res.sendFile(path.join(clientDist, "index.html"));
+});
+
+// Bind to all network interfaces (not just localhost) so devices on the same
+// Wi-Fi — e.g. a phone — can reach this server via the host machine's LAN IP.
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Sandhya server listening on http://localhost:${port} (and on your LAN IP)`);
 });

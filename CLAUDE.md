@@ -51,8 +51,16 @@ server/src/
 - **Journal**: one reflection per calendar date (`entry_date` is unique,
   upserted) — not free-form multiple-entries-per-day journaling.
 
+- **Phone/LAN access**: Express also serves the built client (`client/dist`)
+  and binds to `0.0.0.0`, so `npm start` (build + serve on one port) lets a
+  phone on the same Wi-Fi reach the app via the host machine's LAN IP — no
+  public hosting. Dev mode's Vite server (`npm run dev`) also binds to the
+  LAN via `server.host: true` in `client/vite.config.ts`. See README's "Use
+  it from your phone" section.
+
 ## Commands
 ```bash
-npm run dev              # root: client + server concurrently
+npm run dev              # dev mode: client (Vite, hot reload) + server, concurrently
+npm start                 # production mode: build client, serve client+API from one port
 cd server && npm test    # streakService unit tests
 ```

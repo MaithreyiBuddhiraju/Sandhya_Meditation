@@ -41,6 +41,34 @@ npm run dev   # starts client (Vite) + server (Express) concurrently
 Client: http://localhost:5173 (proxies `/api` to the server)
 Server: http://localhost:3001
 
+## Use it from your phone (same Wi-Fi)
+
+`localhost` on your phone means the phone itself, not your Mac — so the dev
+URLs above only work on the machine running them. To reach Sandhya from a
+phone on the same Wi-Fi network:
+
+1. Find your Mac's LAN IP:
+   ```bash
+   ipconfig getifaddr en0   # or en1, depending on your network interface
+   ```
+2. Build and run in production mode — one process serves both the API and
+   the built client on a single port:
+   ```bash
+   npm start
+   ```
+3. On your phone's browser, go to `http://<that-IP>:3001` (e.g.
+   `http://192.168.1.82:3001`).
+
+Your Mac must stay awake and `npm start` must keep running for the phone to
+reach it — this is LAN access, not public hosting. If macOS prompts to allow
+incoming network connections for Node, allow it.
+
+Note: `npm start` serves the last build. If you change the client code, rerun
+`npm start` (or `npm run build`) to pick up the changes — there's no hot
+reload in this mode. For active development with hot reload, use
+`npm run dev` instead; it also binds to your LAN IP (Vite prints the network
+URL to use).
+
 ## v1 Scope
 
 - Daily Stoic + Gita/Devi Bhagavatam pairing with journal reflection
