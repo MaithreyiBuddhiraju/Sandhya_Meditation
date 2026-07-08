@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { DailyPairing } from "./pages/DailyPairing";
 import { Journal } from "./pages/Journal";
+import { ThoughtSorter } from "./pages/ThoughtSorter";
 import { BottomNav, type NavTab } from "./components/BottomNav";
 
 const TABS: NavTab[] = [
   { id: "today", label: "Today" },
   { id: "journal", label: "Journal" },
+  { id: "sort", label: "Sort" },
 ];
 
 function formattedToday() {
@@ -28,6 +30,7 @@ function App() {
       <main className="app-main">
         {activeTab === "today" && <DailyPairing />}
         {activeTab === "journal" && <Journal />}
+        {activeTab === "sort" && <ThoughtSorter />}
       </main>
       <BottomNav tabs={TABS} activeTab={activeTab} onSelect={setActiveTab} />
     </div>

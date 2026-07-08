@@ -1,0 +1,9 @@
+.disclaimer {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  line-height: 1.5;
+  text-align: center;
+}

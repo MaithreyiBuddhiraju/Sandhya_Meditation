@@ -43,3 +43,21 @@ export interface StreakSummary {
   longest_streak: number;
   week: DayState[];
 }
+
+export type Bucket = "full_control" | "partial_control" | "no_control";
+
+export interface SortedThought {
+  id: number;
+  entry_date: string;
+  created_at: string;
+  worry_text: string;
+  bucket: Bucket;
+  stoic_reframe: string;
+  stoic_concept_ref: string | null;
+  gita_reframe: string;
+  gita_concept_ref: string | null;
+  source: "manual" | "ai_assisted";
+  outcome_note: string | null;
+  outcome_recorded_at: string | null;
+  updated_at: string;
+}
