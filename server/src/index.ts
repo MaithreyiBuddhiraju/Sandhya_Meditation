@@ -1,11 +1,15 @@
 import "dotenv/config";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { type NextFunction, type Request, type Response } from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { initDb } from "./db/connection.js";
 import { seedPairings } from "./db/seed/seedPairings.js";
+import { requireAuth } from "./middleware/requireAuth.js";
+import { getSessionSecret } from "./services/authService.js";
 import { aiRouter } from "./routes/ai.js";
+import { authRouter } from "./routes/auth.js";
 import { journalRouter } from "./routes/journal.js";
 import { pairingsRouter } from "./routes/pairings.js";
 import { settingsRouter } from "./routes/settings.js";
@@ -20,10 +24,18 @@ const port = Number(process.env.PORT) || 3001;
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser(getSessionSecret()));
 
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
 });
+
+// Unprotected — the login flow itself, and the "do I need to log in?" check.
+app.use("/api/auth", authRouter);
+
+// Everything else under /api requires a valid session when APP_PASSWORD_HASH
+// is set; a no-op pass-through otherwise (matches today's no-login default).
+app.use("/api", requireAuth);
 
 app.use("/api/pairings", pairingsRouter);
 app.use("/api/journal", journalRouter);

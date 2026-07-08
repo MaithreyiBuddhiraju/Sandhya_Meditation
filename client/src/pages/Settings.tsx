@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { settingsApi } from "../api/settings";
+import { authApi } from "../api/auth";
 import { TRADITION_INFO, TRADITION_ORDER } from "../constants/traditions";
 import type { Settings as SettingsType, TraditionPreference } from "../types";
 import "./Settings.css";
 
-export function Settings() {
+export function Settings({ onLogout }: { onLogout?: () => void }) {
   const [settings, setSettings] = useState<SettingsType | null>(null);
   const [loading, setLoading] = useState(true);
   const [savingPreference, setSavingPreference] = useState(false);
+  const [authRequired, setAuthRequired] = useState(false);
 
   useEffect(() => {
     settingsApi
       .get()
       .then(setSettings)
       .finally(() => setLoading(false));
+    authApi.getStatus().then(({ authRequired }) => setAuthRequired(authRequired));
   }, []);
 
   async function handlePreferenceChange(preference: TraditionPreference) {
@@ -24,6 +27,11 @@ export function Settings() {
     } finally {
       setSavingPreference(false);
     }
+  }
+
+  async function handleLogout() {
+    await authApi.logout();
+    onLogout?.();
   }
 
   if (loading) return <div className="loading-state">Loading settings…</div>;
@@ -82,6 +90,15 @@ export function Settings() {
           Export to Markdown
         </a>
       </div>
+
+      {authRequired && (
+        <div className="card settings-section">
+          <h2 className="settings-section__title">Session</h2>
+          <button type="button" className="settings-option" onClick={handleLogout}>
+            Log out
+          </button>
+        </div>
+      )}
     </div>
   );
 }
