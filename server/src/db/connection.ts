@@ -12,6 +12,18 @@ const SCHEMA_PATH = path.join(__dirname, "schema.sql");
  * @libsql/client API either way, so the rest of the codebase never branches
  * on which one is active.
  */
+if (process.env.VERCEL && !process.env.DATABASE_URL) {
+  // Serverless functions have a read-only filesystem outside /tmp — falling
+  // back to a local SQLite file here would crash on the first fs.mkdirSync
+  // with an opaque error. Fail loudly and specifically instead.
+  throw new Error(
+    "DATABASE_URL is not set. Vercel deployments require a remote Turso database " +
+      "(DATABASE_URL + DATABASE_AUTH_TOKEN) — check that both are set for the " +
+      "Production environment in the Vercel dashboard, then redeploy (env var " +
+      "changes don't apply to an already-built deployment)."
+  );
+}
+
 const databaseUrl =
   process.env.DATABASE_URL ?? `file:${path.join(__dirname, "..", "..", "data", "sandhya.db")}`;
 const authToken = process.env.DATABASE_AUTH_TOKEN;
