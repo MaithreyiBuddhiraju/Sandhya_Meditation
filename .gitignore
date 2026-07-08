@@ -12,6 +12,9 @@ server/data/*.db-wal
 # Secrets
 server/.env
 
+# Vercel project linkage (created by `vercel link` / `vercel deploy`)
+.vercel
+
 # OS
 .DS_Store
 

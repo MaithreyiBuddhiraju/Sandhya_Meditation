@@ -9,7 +9,14 @@ twilight junctures of the day.
 
 - **Client**: React + Vite, TypeScript
 - **Server**: Node + Express, TypeScript
-- **Database**: SQLite via `better-sqlite3`
+- **Database**: SQLite via `@libsql/client` — a local file by default
+  (`server/data/sandhya.db`), or a remote [Turso](https://turso.tech) database
+  when `DATABASE_URL`/`DATABASE_AUTH_TOKEN` are set (needed for serverless
+  hosting, e.g. Vercel)
+- **Auth**: an optional single shared password (`APP_PASSWORD_HASH` +
+  `SESSION_SECRET`) — unset, the app has no login screen at all (fine for
+  local/LAN use); set, every page and API route requires it (needed once the
+  app is reachable beyond your home network)
 - **AI (optional)**: Anthropic API (`@anthropic-ai/sdk`, model `claude-sonnet-5`) —
   all AI features degrade gracefully without an API key
 
@@ -68,6 +75,42 @@ Note: `npm start` serves the last build. If you change the client code, rerun
 reload in this mode. For active development with hot reload, use
 `npm run dev` instead; it also binds to your LAN IP (Vite prints the network
 URL to use).
+
+## Deploy to Vercel (always-on, no Mac required)
+
+LAN access (above) needs your Mac awake and `npm start` running. For
+always-on access from anywhere, deploy to Vercel with a [Turso](https://turso.tech)
+database:
+
+1. **Turso** (free, no credit card):
+   ```bash
+   curl -sSfL https://get.tur.so/install.sh | bash
+   turso auth signup
+   turso db create sandhya
+   turso db show sandhya --url          # -> DATABASE_URL
+   turso db tokens create sandhya       # -> DATABASE_AUTH_TOKEN
+   ```
+2. **Choose a password** and hash it (don't commit the plaintext anywhere):
+   ```bash
+   cd server && node -e "console.log(require('bcryptjs').hashSync('YOUR_PASSWORD', 10))"
+   ```
+   That output is `APP_PASSWORD_HASH`. Generate `SESSION_SECRET` with:
+   ```bash
+   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+   ```
+3. **Connect the repo to Vercel** (via the [Vercel dashboard](https://vercel.com/new)
+   — import the GitHub repo — or `npx vercel` from this directory) and set
+   these 5 environment variables in the Vercel project settings:
+   - `ANTHROPIC_API_KEY` (optional — omit to leave AI features off)
+   - `DATABASE_URL`, `DATABASE_AUTH_TOKEN` (from step 1)
+   - `APP_PASSWORD_HASH`, `SESSION_SECRET` (from step 2)
+4. Deploy. `vercel.json` builds the client as a static site and routes
+   `/api/*` to `api/index.ts`, a serverless function wrapping the same
+   Express app (`server/src/app.ts`) used locally.
+
+Local dev (`npm run dev` / `npm start`) is unaffected — `DATABASE_URL` and
+`APP_PASSWORD_HASH` stay unset there, so it keeps using a local file with no
+login screen unless you deliberately set them in `server/.env` too.
 
 ## v1 Scope
 
