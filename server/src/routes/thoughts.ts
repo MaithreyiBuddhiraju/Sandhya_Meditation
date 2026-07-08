@@ -1,5 +1,5 @@
 import { Router } from "express";
-import type { Bucket } from "../content/bucketReframes.js";
+import type { Bucket, BucketReframe } from "../content/bucketReframes.js";
 import {
   createSortedThought,
   getThoughtById,
@@ -31,10 +31,12 @@ thoughtsRouter.get("/:id", (req, res) => {
 });
 
 thoughtsRouter.post("/", (req, res) => {
-  const { entry_date, worry_text, bucket } = req.body as {
+  const { entry_date, worry_text, bucket, custom_reframe } = req.body as {
     entry_date?: string;
     worry_text?: string;
     bucket?: Bucket;
+    /** Present when saving an AI-assist suggestion (Step 7) — omit for the static baseline. */
+    custom_reframe?: BucketReframe;
   };
 
   if (!entry_date || !worry_text?.trim() || !bucket) {
@@ -46,7 +48,12 @@ thoughtsRouter.post("/", (req, res) => {
     return;
   }
 
-  const thought = createSortedThought({ entryDate: entry_date, worryText: worry_text, bucket });
+  const thought = createSortedThought({
+    entryDate: entry_date,
+    worryText: worry_text,
+    bucket,
+    customReframe: custom_reframe,
+  });
   res.status(201).json(thought);
 });
 

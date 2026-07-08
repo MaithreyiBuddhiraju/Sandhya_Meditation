@@ -5,6 +5,7 @@ import { streakApi } from "../api/streak";
 import { todayString } from "../hooks/useToday";
 import { PairingCard } from "../components/PairingCard";
 import { StreakDiyaRow } from "../components/StreakDiyaRow";
+import { AiBridgePanel } from "../components/AiBridgePanel";
 import type { Pairing, StreakSummary } from "../types";
 import "./DailyPairing.css";
 
@@ -77,7 +78,9 @@ export function DailyPairing() {
     <div className="daily-pairing">
       {streak && <StreakDiyaRow summary={streak} />}
 
-      <PairingCard pairing={pairing} />
+      <PairingCard pairing={pairing}>
+        <AiBridgePanel pairingId={pairing.id} />
+      </PairingCard>
 
       <div className="card reflection-card">
         <label htmlFor="reflection" className="reflection-card__label">

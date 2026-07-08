@@ -66,3 +66,45 @@ export interface Settings {
   tradition_preference: TraditionPreference;
   ai_configured: boolean;
 }
+
+export interface AiEnvelope<T> {
+  configured: boolean;
+  cached: boolean;
+  data: T | null;
+  empty?: boolean;
+}
+
+export interface BridgeResult {
+  connection: string;
+  practice: string;
+}
+
+export interface ExploreSuggestion {
+  tradition: Tradition;
+  verse_ref: string;
+  verse_paraphrase: string;
+  stoic_concept: string;
+  stoic_theme: string;
+  bridge_prompt: string;
+}
+
+export interface SortAssistResult {
+  suggested_bucket: Bucket;
+  stoic_reframe: string;
+  stoic_concept_ref: string;
+  gita_reframe: string;
+  gita_concept_ref: string;
+}
+
+export interface WeeklyDigestResult {
+  themes: string[];
+  pattern: string;
+  suggested_focus: string;
+}
+
+export interface BucketReframe {
+  stoic_reframe: string;
+  stoic_concept_ref: string;
+  gita_reframe: string;
+  gita_concept_ref: string;
+}

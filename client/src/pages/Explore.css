@@ -1,0 +1,97 @@
+.explore-page__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.explore-page__input {
+  width: 100%;
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: 1rem;
+  margin-bottom: var(--space-4);
+}
+
+.explore-page__input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.explore-page__note {
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+  margin: var(--space-2) 0 0;
+}
+
+.explore-card__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin-bottom: var(--space-2);
+}
+
+.explore-card__verse-ref {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.explore-card__verse {
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.explore-card__stoic {
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.explore-card__stoic-concept {
+  font-weight: 600;
+  margin: 0 0 var(--space-1);
+}
+
+.explore-card__stoic-theme {
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+.explore-card__bridge {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: var(--space-4);
+}
+
+.explore-card__save {
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.explore-card__save:disabled {
+  opacity: 0.6;
+  cursor: default;
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}

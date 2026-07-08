@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DailyPairing } from "./pages/DailyPairing";
 import { Journal } from "./pages/Journal";
 import { ThoughtSorter } from "./pages/ThoughtSorter";
+import { Explore } from "./pages/Explore";
 import { Settings } from "./pages/Settings";
 import { BottomNav, type NavTab } from "./components/BottomNav";
 
@@ -9,6 +10,7 @@ const TABS: NavTab[] = [
   { id: "today", label: "Today" },
   { id: "journal", label: "Journal" },
   { id: "sort", label: "Sort" },
+  { id: "explore", label: "Explore" },
   { id: "settings", label: "Settings" },
 ];
 
@@ -33,6 +35,7 @@ function App() {
         {activeTab === "today" && <DailyPairing />}
         {activeTab === "journal" && <Journal />}
         {activeTab === "sort" && <ThoughtSorter />}
+        {activeTab === "explore" && <Explore />}
         {activeTab === "settings" && <Settings />}
       </main>
       <BottomNav tabs={TABS} activeTab={activeTab} onSelect={setActiveTab} />

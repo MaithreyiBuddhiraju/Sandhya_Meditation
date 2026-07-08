@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Pairing } from "../types";
 import "./PairingCard.css";
 
@@ -6,7 +7,7 @@ const traditionLabel: Record<Pairing["tradition"], string> = {
   devi_bhagavatam: "Srimad Devi Bhagavatam",
 };
 
-export function PairingCard({ pairing }: { pairing: Pairing }) {
+export function PairingCard({ pairing, children }: { pairing: Pairing; children?: ReactNode }) {
   return (
     <div className="card pairing-card">
       <section className="pairing-card__section">
@@ -30,6 +31,8 @@ export function PairingCard({ pairing }: { pairing: Pairing }) {
         <p className="pairing-card__bridge-label">Journal prompt</p>
         <p className="pairing-card__bridge-text">{pairing.bridge_prompt}</p>
       </div>
+
+      {children}
     </div>
   );
 }

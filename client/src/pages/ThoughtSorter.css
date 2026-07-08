@@ -26,6 +26,59 @@
   outline-offset: 1px;
 }
 
+.thought-sorter__ai-assist {
+  margin-bottom: var(--space-4);
+}
+
+.thought-sorter__ai-button {
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.thought-sorter__ai-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.thought-sorter__ai-note {
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+  margin: var(--space-1) 0 0;
+}
+
+.thought-sorter__ai-suggestion {
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.thought-sorter__ai-suggestion-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+  margin-bottom: var(--space-2);
+}
+
+.thought-sorter__ai-suggestion-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin: 0 0 var(--space-2);
+}
+
+.thought-sorter__bucket-button--suggested {
+  border-color: var(--color-accent);
+}
+
 .thought-sorter__prompt {
   font-size: 0.875rem;
   color: var(--color-text-muted);

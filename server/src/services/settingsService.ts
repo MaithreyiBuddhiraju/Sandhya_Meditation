@@ -1,14 +1,10 @@
 import { db } from "../db/connection.js";
 import type { TraditionPreference } from "./pairingService.js";
+import { isAiConfigured } from "./aiConfig.js";
 
 export interface Settings {
   tradition_preference: TraditionPreference;
   ai_configured: boolean;
-}
-
-/** The API key lives only in server/.env — never read from or written to the DB. */
-function isAiConfigured(): boolean {
-  return Boolean(process.env.ANTHROPIC_API_KEY?.trim());
 }
 
 export function getSettings(): Settings {

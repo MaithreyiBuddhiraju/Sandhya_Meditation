@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { journalApi } from "../api/journal";
 import { JournalList } from "../components/JournalList";
+import { WeeklyDigestPanel } from "../components/WeeklyDigestPanel";
 import type { JournalEntryWithPairing } from "../types";
 import "./Journal.css";
 
@@ -34,6 +35,8 @@ export function Journal() {
 
   return (
     <div className="journal-page">
+      <WeeklyDigestPanel />
+
       <input
         type="search"
         className="journal-page__search"

@@ -1,5 +1,5 @@
 import { apiClient } from "./client";
-import type { Bucket, SortedThought } from "../types";
+import type { Bucket, BucketReframe, SortedThought } from "../types";
 
 export interface ThoughtSearchParams {
   query?: string;
@@ -9,11 +9,12 @@ export interface ThoughtSearchParams {
 }
 
 export const thoughtsApi = {
-  create: (entryDate: string, worryText: string, bucket: Bucket) =>
+  create: (entryDate: string, worryText: string, bucket: Bucket, customReframe?: BucketReframe) =>
     apiClient.post<SortedThought>("/thoughts", {
       entry_date: entryDate,
       worry_text: worryText,
       bucket,
+      custom_reframe: customReframe,
     }),
   search: (params: ThoughtSearchParams = {}) => {
     const search = new URLSearchParams();
