@@ -1,0 +1,43 @@
+.journal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.journal-list__item {
+  margin-bottom: var(--space-4);
+}
+
+.journal-list__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.journal-list__date {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-accent-soft);
+}
+
+.journal-list__concept {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.journal-list__text {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.journal-list__empty {
+  text-align: center;
+  padding: var(--space-8) 0;
+}

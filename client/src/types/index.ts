@@ -24,3 +24,8 @@ export interface JournalEntry {
   created_at: string;
   updated_at: string;
 }
+
+export interface JournalEntryWithPairing extends JournalEntry {
+  stoic_concept: string | null;
+  verse_ref: string | null;
+}

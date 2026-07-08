@@ -1,0 +1,35 @@
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-2);
+  padding-bottom: max(var(--space-2), env(safe-area-inset-bottom));
+}
+
+.bottom-nav__button {
+  flex: 1;
+  max-width: 8rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.bottom-nav__button:hover {
+  color: var(--color-text);
+}
+
+.bottom-nav__button--active {
+  color: var(--color-accent);
+  background: var(--color-surface-raised);
+}

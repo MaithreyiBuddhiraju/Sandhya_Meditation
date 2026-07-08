@@ -1,7 +1,12 @@
 import { Router } from "express";
-import { getEntryByDate, upsertEntry } from "../services/journalService.js";
+import { getEntryByDate, searchEntries, upsertEntry } from "../services/journalService.js";
 
 export const journalRouter = Router();
+
+journalRouter.get("/", (req, res) => {
+  const { query, from, to } = req.query as { query?: string; from?: string; to?: string };
+  res.json(searchEntries({ query, from, to }));
+});
 
 journalRouter.get("/:date", (req, res) => {
   const entry = getEntryByDate(req.params.date);

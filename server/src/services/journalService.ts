@@ -42,3 +42,45 @@ export function listEntryDates(): string[] {
     db.prepare("SELECT entry_date FROM journal_entries").all() as { entry_date: string }[]
   ).map((row) => row.entry_date);
 }
+
+export interface JournalEntryWithPairing extends JournalEntry {
+  stoic_concept: string | null;
+  verse_ref: string | null;
+}
+
+export interface JournalSearchParams {
+  query?: string;
+  from?: string;
+  to?: string;
+}
+
+/** Browse/search journal entries, newest first, optionally filtered by text and date range. */
+export function searchEntries(params: JournalSearchParams): JournalEntryWithPairing[] {
+  const conditions: string[] = [];
+  const args: unknown[] = [];
+
+  if (params.query) {
+    conditions.push("je.reflection_text LIKE ?");
+    args.push(`%${params.query}%`);
+  }
+  if (params.from) {
+    conditions.push("je.entry_date >= ?");
+    args.push(params.from);
+  }
+  if (params.to) {
+    conditions.push("je.entry_date <= ?");
+    args.push(params.to);
+  }
+
+  const whereClause = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+
+  return db
+    .prepare(
+      `SELECT je.*, p.stoic_concept AS stoic_concept, p.verse_ref AS verse_ref
+       FROM journal_entries je
+       LEFT JOIN pairings p ON p.id = je.pairing_id
+       ${whereClause}
+       ORDER BY je.entry_date DESC`
+    )
+    .all(...args) as JournalEntryWithPairing[];
+}

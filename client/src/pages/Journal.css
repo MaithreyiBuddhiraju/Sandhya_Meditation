@@ -1,0 +1,19 @@
+.journal-page__search {
+  width: 100%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: 1rem;
+  margin-bottom: var(--space-6);
+}
+
+.journal-page__search:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.journal-page__search::placeholder {
+  color: var(--color-text-faint);
+}
