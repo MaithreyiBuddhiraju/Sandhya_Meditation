@@ -130,21 +130,21 @@ export function computeWeekView(activeDates: Set<string>, todayStr: string): Day
 
 // --- DB-backed summary ---
 
-function getActiveDates(): Set<string> {
-  const journalDates = db
-    .prepare("SELECT DISTINCT entry_date FROM journal_entries")
-    .all() as { entry_date: string }[];
-  const thoughtDates = db
-    .prepare("SELECT DISTINCT entry_date FROM sorted_thoughts")
-    .all() as { entry_date: string }[];
+async function getActiveDates(): Promise<Set<string>> {
+  const [journalResult, thoughtResult] = await Promise.all([
+    db.execute("SELECT DISTINCT entry_date FROM journal_entries"),
+    db.execute("SELECT DISTINCT entry_date FROM sorted_thoughts"),
+  ]);
+  const journalDates = journalResult.rows as unknown as { entry_date: string }[];
+  const thoughtDates = thoughtResult.rows as unknown as { entry_date: string }[];
   return new Set([
     ...journalDates.map((r) => r.entry_date),
     ...thoughtDates.map((r) => r.entry_date),
   ]);
 }
 
-export function getStreakSummary(todayStr: string): StreakSummary {
-  const activeDates = getActiveDates();
+export async function getStreakSummary(todayStr: string): Promise<StreakSummary> {
+  const activeDates = await getActiveDates();
   const { currentStreak, longestStreak } = computeStreakData(activeDates, todayStr);
   const week = computeWeekView(activeDates, todayStr);
   return { current_streak: currentStreak, longest_streak: longestStreak, week };

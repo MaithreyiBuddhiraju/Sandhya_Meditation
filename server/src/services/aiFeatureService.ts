@@ -28,11 +28,11 @@ const BRIDGE_SCHEMA = {
 };
 
 export async function getBridgeExplanation(pairingId: number): Promise<AiResult<BridgeResult> | null> {
-  const pairing = getPairingById(pairingId);
+  const pairing = await getPairingById(pairingId);
   if (!pairing) return null;
 
   const inputHash = hashInput(String(pairingId), pairing.updated_at);
-  const cached = getCached<BridgeResult>("bridge", inputHash);
+  const cached = await getCached<BridgeResult>("bridge", inputHash);
   if (cached) return { data: cached, cached: true };
 
   const userMessage = [
@@ -49,7 +49,7 @@ export async function getBridgeExplanation(pairingId: number): Promise<AiResult<
     schema: BRIDGE_SCHEMA,
   });
 
-  setCached("bridge", inputHash, data);
+  await setCached("bridge", inputHash, data);
   return { data, cached: false };
 }
 
@@ -102,7 +102,7 @@ export async function getExploreSuggestions(
 ): Promise<AiResult<ExploreSuggestion[]>> {
   const normalized = conceptText.trim().toLowerCase();
   const inputHash = hashInput(normalized);
-  const cached = getCached<{ suggestions: ExploreSuggestion[] }>("explore", inputHash);
+  const cached = await getCached<{ suggestions: ExploreSuggestion[] }>("explore", inputHash);
   if (cached) return { data: cached.suggestions, cached: true };
 
   const data = await runStructuredPrompt<{ suggestions: ExploreSuggestion[] }>({
@@ -111,7 +111,7 @@ export async function getExploreSuggestions(
     schema: EXPLORE_SCHEMA,
   });
 
-  setCached("explore", inputHash, data);
+  await setCached("explore", inputHash, data);
   return { data: data.suggestions, cached: false };
 }
 
@@ -151,7 +151,7 @@ const SORT_ASSIST_SCHEMA = {
 
 export async function getSortAssist(worryText: string): Promise<AiResult<SortAssistResult>> {
   const inputHash = hashInput(worryText.trim());
-  const cached = getCached<SortAssistResult>("thought_sort", inputHash);
+  const cached = await getCached<SortAssistResult>("thought_sort", inputHash);
   if (cached) return { data: cached, cached: true };
 
   const data = await runStructuredPrompt<SortAssistResult>({
@@ -160,7 +160,7 @@ export async function getSortAssist(worryText: string): Promise<AiResult<SortAss
     schema: SORT_ASSIST_SCHEMA,
   });
 
-  setCached("thought_sort", inputHash, data);
+  await setCached("thought_sort", inputHash, data);
   return { data, cached: false };
 }
 
@@ -196,11 +196,11 @@ function last7DaysRange(): { from: string; to: string } {
 
 export async function getWeeklyDigest(): Promise<AiResult<WeeklyDigestResult> | { empty: true }> {
   const { from, to } = last7DaysRange();
-  const entries = searchEntries({ from, to });
+  const entries = await searchEntries({ from, to });
   if (entries.length === 0) return { empty: true };
 
   const inputHash = hashInput(...entries.map((e) => `${e.entry_date}:${e.updated_at}`));
-  const cached = getCached<WeeklyDigestResult>("weekly_digest", inputHash);
+  const cached = await getCached<WeeklyDigestResult>("weekly_digest", inputHash);
   if (cached) return { data: cached, cached: true };
 
   const userMessage = entries
@@ -213,6 +213,6 @@ export async function getWeeklyDigest(): Promise<AiResult<WeeklyDigestResult> | 
     schema: WEEKLY_DIGEST_SCHEMA,
   });
 
-  setCached("weekly_digest", inputHash, data);
+  await setCached("weekly_digest", inputHash, data);
   return { data, cached: false };
 }

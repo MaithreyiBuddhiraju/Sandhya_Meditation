@@ -25,19 +25,17 @@ export interface CreateThoughtParams {
   customReframe?: BucketReframe;
 }
 
-export function createSortedThought(params: CreateThoughtParams): SortedThought {
+export async function createSortedThought(params: CreateThoughtParams): Promise<SortedThought> {
   const reframe = params.customReframe ?? bucketReframes[params.bucket];
   const source = params.customReframe ? "ai_assisted" : "manual";
 
-  const result = db
-    .prepare(
-      `INSERT INTO sorted_thoughts
+  const result = await db.execute({
+    sql: `INSERT INTO sorted_thoughts
         (entry_date, worry_text, bucket, stoic_reframe, stoic_concept_ref,
          gita_reframe, gita_concept_ref, source)
-       VALUES (@entry_date, @worry_text, @bucket, @stoic_reframe, @stoic_concept_ref,
-               @gita_reframe, @gita_concept_ref, @source)`
-    )
-    .run({
+       VALUES (:entry_date, :worry_text, :bucket, :stoic_reframe, :stoic_concept_ref,
+               :gita_reframe, :gita_concept_ref, :source)`,
+    args: {
       entry_date: params.entryDate,
       worry_text: params.worryText,
       bucket: params.bucket,
@@ -46,15 +44,18 @@ export function createSortedThought(params: CreateThoughtParams): SortedThought 
       gita_reframe: reframe.gita_reframe,
       gita_concept_ref: reframe.gita_concept_ref,
       source,
-    });
+    },
+  });
 
-  return getThoughtById(result.lastInsertRowid as number)!;
+  return (await getThoughtById(Number(result.lastInsertRowid)))!;
 }
 
-export function getThoughtById(id: number): SortedThought | undefined {
-  return db.prepare("SELECT * FROM sorted_thoughts WHERE id = ?").get(id) as
-    | SortedThought
-    | undefined;
+export async function getThoughtById(id: number): Promise<SortedThought | undefined> {
+  const result = await db.execute({
+    sql: "SELECT * FROM sorted_thoughts WHERE id = ?",
+    args: [id],
+  });
+  return result.rows[0] ? ({ ...result.rows[0] } as unknown as SortedThought) : undefined;
 }
 
 export interface ThoughtSearchParams {
@@ -64,9 +65,9 @@ export interface ThoughtSearchParams {
   to?: string;
 }
 
-export function searchThoughts(params: ThoughtSearchParams): SortedThought[] {
+export async function searchThoughts(params: ThoughtSearchParams): Promise<SortedThought[]> {
   const conditions: string[] = [];
-  const args: unknown[] = [];
+  const args: string[] = [];
 
   if (params.query) {
     conditions.push("worry_text LIKE ?");
@@ -87,18 +88,24 @@ export function searchThoughts(params: ThoughtSearchParams): SortedThought[] {
 
   const whereClause = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
 
-  return db
-    .prepare(`SELECT * FROM sorted_thoughts ${whereClause} ORDER BY entry_date DESC, id DESC`)
-    .all(...args) as SortedThought[];
+  const result = await db.execute({
+    sql: `SELECT * FROM sorted_thoughts ${whereClause} ORDER BY entry_date DESC, id DESC`,
+    args,
+  });
+  return result.rows.map((row) => ({ ...row }) as unknown as SortedThought);
 }
 
-export function recordOutcome(id: number, outcomeNote: string): SortedThought | undefined {
-  const existing = getThoughtById(id);
+export async function recordOutcome(
+  id: number,
+  outcomeNote: string
+): Promise<SortedThought | undefined> {
+  const existing = await getThoughtById(id);
   if (!existing) return undefined;
-  db.prepare(
-    `UPDATE sorted_thoughts
+  await db.execute({
+    sql: `UPDATE sorted_thoughts
        SET outcome_note = ?, outcome_recorded_at = datetime('now'), updated_at = datetime('now')
-     WHERE id = ?`
-  ).run(outcomeNote, id);
+     WHERE id = ?`,
+    args: [outcomeNote, id],
+  });
   return getThoughtById(id);
 }

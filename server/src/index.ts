@@ -1,8 +1,9 @@
 import "dotenv/config";
 import cors from "cors";
-import express from "express";
+import express, { type NextFunction, type Request, type Response } from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { initDb } from "./db/connection.js";
 import { seedPairings } from "./db/seed/seedPairings.js";
 import { aiRouter } from "./routes/ai.js";
 import { journalRouter } from "./routes/journal.js";
@@ -11,7 +12,8 @@ import { settingsRouter } from "./routes/settings.js";
 import { streakRouter } from "./routes/streak.js";
 import { thoughtsRouter } from "./routes/thoughts.js";
 
-seedPairings();
+await initDb();
+await seedPairings();
 
 const app = express();
 const port = Number(process.env.PORT) || 3001;
@@ -37,6 +39,13 @@ const clientDist = path.join(__dirname, "..", "..", "client", "dist");
 app.use(express.static(clientDist));
 app.get(/^(?!\/api).*/, (_req, res) => {
   res.sendFile(path.join(clientDist, "index.html"));
+});
+
+// Catches errors forwarded by asyncHandler (and anything else calling next(err)).
+// Must be registered after all routes.
+app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+  console.error(err);
+  res.status(500).json({ error: err instanceof Error ? err.message : "Internal server error." });
 });
 
 // Bind to all network interfaces (not just localhost) so devices on the same

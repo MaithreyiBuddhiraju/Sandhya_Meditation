@@ -20,11 +20,10 @@ export interface Pairing {
 
 /** Reads the single-row tradition preference. Duplicated narrowly here to
  * avoid a premature dependency on settingsService, which lands in Step 6. */
-function getTraditionPreference(): TraditionPreference {
-  const row = db
-    .prepare("SELECT tradition_preference FROM settings WHERE id = 1")
-    .get() as { tradition_preference: TraditionPreference };
-  return row.tradition_preference;
+async function getTraditionPreference(): Promise<TraditionPreference> {
+  const result = await db.execute("SELECT tradition_preference FROM settings WHERE id = 1");
+  return (result.rows[0] as unknown as { tradition_preference: TraditionPreference })
+    .tradition_preference;
 }
 
 function dayOfYear(date: Date): number {
@@ -38,34 +37,44 @@ function dayOfYear(date: Date): number {
  * Filters by tradition first when the preference isn't 'both', so each
  * tradition's own cycle lengthens independently as pairings are added.
  */
-export function getTodaysPairing(date: Date = new Date()): Pairing | null {
-  const preference = getTraditionPreference();
-  const whereClause = preference !== "both" ? "WHERE tradition = ?" : "";
-  const params = preference !== "both" ? [preference] : [];
+export async function getTodaysPairing(date: Date = new Date()): Promise<Pairing | null> {
+  const preference = await getTraditionPreference();
+  const whereClause = preference !== "both" ? "WHERE tradition = :tradition" : "";
+  const args: Record<string, string | number> =
+    preference !== "both" ? { tradition: preference } : {};
 
-  const { count } = db
-    .prepare(`SELECT COUNT(*) AS count FROM pairings ${whereClause}`)
-    .get(...params) as { count: number };
+  const countResult = await db.execute({
+    sql: `SELECT COUNT(*) AS count FROM pairings ${whereClause}`,
+    args,
+  });
+  const count = Number((countResult.rows[0] as unknown as { count: number }).count);
   if (count === 0) return null;
 
   const offset = (dayOfYear(date) - 1) % count;
-  const pairing = db
-    .prepare(`SELECT * FROM pairings ${whereClause} ORDER BY id LIMIT 1 OFFSET ?`)
-    .get(...params, offset) as Pairing;
-  return pairing;
+  const result = await db.execute({
+    sql: `SELECT * FROM pairings ${whereClause} ORDER BY id LIMIT 1 OFFSET :offset`,
+    args: { ...args, offset },
+  });
+  return { ...result.rows[0] } as unknown as Pairing;
 }
 
-export function listPairings(tradition?: TraditionPreference): Pairing[] {
-  if (tradition && tradition !== "both") {
-    return db
-      .prepare("SELECT * FROM pairings WHERE tradition = ? ORDER BY id")
-      .all(tradition) as Pairing[];
-  }
-  return db.prepare("SELECT * FROM pairings ORDER BY id").all() as Pairing[];
+export async function listPairings(tradition?: TraditionPreference): Promise<Pairing[]> {
+  const result =
+    tradition && tradition !== "both"
+      ? await db.execute({
+          sql: "SELECT * FROM pairings WHERE tradition = :tradition ORDER BY id",
+          args: { tradition },
+        })
+      : await db.execute("SELECT * FROM pairings ORDER BY id");
+  return result.rows.map((row) => ({ ...row }) as unknown as Pairing);
 }
 
-export function getPairingById(id: number): Pairing | undefined {
-  return db.prepare("SELECT * FROM pairings WHERE id = ?").get(id) as Pairing | undefined;
+export async function getPairingById(id: number): Promise<Pairing | undefined> {
+  const result = await db.execute({
+    sql: "SELECT * FROM pairings WHERE id = :id",
+    args: { id },
+  });
+  return result.rows[0] ? ({ ...result.rows[0] } as unknown as Pairing) : undefined;
 }
 
 export interface NewPairing {
@@ -80,41 +89,57 @@ export interface NewPairing {
   origin?: "user" | "ai_explore";
 }
 
-export function createPairing(pairing: NewPairing): Pairing {
-  const result = db
-    .prepare(
-      `INSERT INTO pairings
+export async function createPairing(pairing: NewPairing): Promise<Pairing> {
+  const args = {
+    stoic_source_ref: null,
+    translation_source_note: null,
+    origin: "user",
+    ...pairing,
+  };
+  const result = await db.execute({
+    sql: `INSERT INTO pairings
         (tradition, stoic_theme, stoic_concept, stoic_source_ref, verse_ref,
          verse_paraphrase, translation_source_note, bridge_prompt, origin)
        VALUES
-        (@tradition, @stoic_theme, @stoic_concept, @stoic_source_ref, @verse_ref,
-         @verse_paraphrase, @translation_source_note, @bridge_prompt, @origin)`
-    )
-    .run({
-      stoic_source_ref: null,
-      translation_source_note: null,
-      origin: "user",
-      ...pairing,
-    });
-  return getPairingById(result.lastInsertRowid as number)!;
+        (:tradition, :stoic_theme, :stoic_concept, :stoic_source_ref, :verse_ref,
+         :verse_paraphrase, :translation_source_note, :bridge_prompt, :origin)`,
+    args,
+  });
+  return (await getPairingById(Number(result.lastInsertRowid)))!;
 }
 
-export function updatePairing(id: number, fields: Partial<NewPairing>): Pairing | undefined {
-  const existing = getPairingById(id);
+export async function updatePairing(
+  id: number,
+  fields: Partial<NewPairing>
+): Promise<Pairing | undefined> {
+  const existing = await getPairingById(id);
   if (!existing) return undefined;
   const merged = { ...existing, ...fields };
-  db.prepare(
-    `UPDATE pairings SET
-      tradition = @tradition, stoic_theme = @stoic_theme, stoic_concept = @stoic_concept,
-      stoic_source_ref = @stoic_source_ref, verse_ref = @verse_ref,
-      verse_paraphrase = @verse_paraphrase, translation_source_note = @translation_source_note,
-      bridge_prompt = @bridge_prompt, updated_at = datetime('now')
-     WHERE id = @id`
-  ).run({ ...merged, id });
+  // libSQL errors on args keys the SQL doesn't reference, so pick exactly
+  // the columns this UPDATE uses — no spreading extra fields (e.g. timestamps).
+  await db.execute({
+    sql: `UPDATE pairings SET
+      tradition = :tradition, stoic_theme = :stoic_theme, stoic_concept = :stoic_concept,
+      stoic_source_ref = :stoic_source_ref, verse_ref = :verse_ref,
+      verse_paraphrase = :verse_paraphrase, translation_source_note = :translation_source_note,
+      bridge_prompt = :bridge_prompt, updated_at = datetime('now')
+     WHERE id = :id`,
+    args: {
+      id,
+      tradition: merged.tradition,
+      stoic_theme: merged.stoic_theme,
+      stoic_concept: merged.stoic_concept,
+      stoic_source_ref: merged.stoic_source_ref,
+      verse_ref: merged.verse_ref,
+      verse_paraphrase: merged.verse_paraphrase,
+      translation_source_note: merged.translation_source_note,
+      bridge_prompt: merged.bridge_prompt,
+    },
+  });
   return getPairingById(id);
 }
 
-export function deletePairing(id: number): boolean {
-  const result = db.prepare("DELETE FROM pairings WHERE id = ?").run(id);
-  return result.changes > 0;
+export async function deletePairing(id: number): Promise<boolean> {
+  const result = await db.execute({ sql: "DELETE FROM pairings WHERE id = :id", args: { id } });
+  return result.rowsAffected > 0;
 }

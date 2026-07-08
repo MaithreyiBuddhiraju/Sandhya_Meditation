@@ -3,27 +3,29 @@ import type { JournalEntryWithPairing } from "./journalService.js";
 import type { SortedThought } from "./thoughtService.js";
 import { BUCKET_LABELS } from "../content/bucketReframes.js";
 
-function allJournalEntries(): JournalEntryWithPairing[] {
-  return db
-    .prepare(
-      `SELECT je.*, p.stoic_concept AS stoic_concept, p.verse_ref AS verse_ref
+async function allJournalEntries(): Promise<JournalEntryWithPairing[]> {
+  const result = await db.execute(
+    `SELECT je.*, p.stoic_concept AS stoic_concept, p.verse_ref AS verse_ref
        FROM journal_entries je
        LEFT JOIN pairings p ON p.id = je.pairing_id
        ORDER BY je.entry_date DESC`
-    )
-    .all() as JournalEntryWithPairing[];
+  );
+  return result.rows.map((row) => ({ ...row }) as unknown as JournalEntryWithPairing);
 }
 
-function allSortedThoughts(): SortedThought[] {
-  return db
-    .prepare("SELECT * FROM sorted_thoughts ORDER BY entry_date DESC, id DESC")
-    .all() as SortedThought[];
+async function allSortedThoughts(): Promise<SortedThought[]> {
+  const result = await db.execute(
+    "SELECT * FROM sorted_thoughts ORDER BY entry_date DESC, id DESC"
+  );
+  return result.rows.map((row) => ({ ...row }) as unknown as SortedThought);
 }
 
 /** Renders all journal entries and sorted thoughts as a single Markdown document. */
-export function exportToMarkdown(): string {
-  const journalEntries = allJournalEntries();
-  const sortedThoughts = allSortedThoughts();
+export async function exportToMarkdown(): Promise<string> {
+  const [journalEntries, sortedThoughts] = await Promise.all([
+    allJournalEntries(),
+    allSortedThoughts(),
+  ]);
   const generatedAt = new Date().toISOString();
 
   const lines: string[] = [];
