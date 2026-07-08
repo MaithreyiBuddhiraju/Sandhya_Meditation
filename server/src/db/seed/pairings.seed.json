@@ -1,0 +1,132 @@
+[
+  {
+    "tradition": "gita",
+    "stoic_concept": "Dichotomy of Control",
+    "stoic_theme": "Epictetus taught that everything can be divided into what is 'up to us' — our judgments, intentions, and responses — and what is not, such as other people's opinions, our reputation, and outcomes beyond our effort. Peace comes from investing our energy only in the first category.",
+    "stoic_source_ref": "Epictetus, Enchiridion 1",
+    "verse_ref": "Bhagavad Gita 2.47",
+    "verse_paraphrase": "Krishna tells Arjuna that he has a right to act, to do his work fully, but no claim on how that work turns out — the outcome was never his to own in the first place.",
+    "translation_source_note": "Paraphrase informed by Kashinath Trimbak Telang's 1882 public-domain translation (Sacred Books of the East) and Edwin Arnold's 1885 'The Song Celestial'; verify exact phrasing against a preferred edition.",
+    "bridge_prompt": "Where today did you mistake the uncontrollable for the controllable?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Memento Mori",
+    "stoic_theme": "Marcus Aurelius kept mortality close at hand, not to induce dread but to sharpen attention — remembering that time is finite makes it harder to waste on pettiness and easier to act with the urgency and honesty a short life deserves.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 2",
+    "verse_ref": "Bhagavad Gita 2.20",
+    "verse_paraphrase": "Krishna reminds Arjuna that the self was never born and does not die — the body changes and ends, but what is truly 'you' is not the perishable part, so facing death squarely need not mean despair.",
+    "translation_source_note": "Paraphrase informed by Telang (1882) and Annie Besant's 1905 translation; verify against a preferred edition.",
+    "bridge_prompt": "If you kept today's mortality in view, what would you stop postponing?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Willing What Happens (Amor Fati)",
+    "stoic_theme": "Epictetus advised against wishing that events unfold as we prefer, and instead training ourselves to wish that events unfold as they actually do — not passive resignation, but a redirection of desire toward reality itself.",
+    "stoic_source_ref": "Epictetus, Enchiridion 8",
+    "verse_ref": "Bhagavad Gita 2.48",
+    "verse_paraphrase": "Krishna describes evenness of mind toward success and failure alike as the very definition of yoga — a steadiness that doesn't depend on things going our way.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where today did you resist 'what is' instead of meeting it evenly?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "Premeditatio Malorum",
+    "stoic_theme": "Seneca recommended rehearsing setbacks and losses in the mind before they happen — not to invite misfortune, but so that when difficulty arrives it finds us already acquainted with the shape of it, and less able to catch us by surprise.",
+    "stoic_source_ref": "Seneca, Letters to Lucilius (e.g. Letter 91)",
+    "verse_ref": "Srimad Devi Bhagavatam 7.31",
+    "verse_paraphrase": "In the Devi Gita section of the text, the Goddess describes how all created forms eventually dissolve back into their source — a teaching meant to loosen our grip on permanence, not to frighten.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 public-domain translation of the Srimad Devi Bhagavatam; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "What are you assuming will last that might not?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Discipline of Assent",
+    "stoic_theme": "Epictetus separated the raw event from our judgment about it, arguing that what disturbs us is rarely the event itself but the verdict we silently attach to it — and that verdict is the one thing always within our power to examine and revise.",
+    "stoic_source_ref": "Epictetus, Enchiridion 5",
+    "verse_ref": "Bhagavad Gita 2.14",
+    "verse_paraphrase": "Krishna tells Arjuna that sensations like heat and cold, pleasure and pain, are temporary contacts that come and go — and that learning to bear them without being ruled by them is part of maturing.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What judgment did you add to today's events that wasn't actually in the events themselves?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "The View From Above",
+    "stoic_theme": "Marcus Aurelius practiced imagining himself from a great height — watching human affairs, his own included, shrink to their true proportion — as a way of loosening the grip of whatever felt urgent up close.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 9",
+    "verse_ref": "Srimad Devi Bhagavatam 7.33",
+    "verse_paraphrase": "The Goddess distinguishes the true Self from the body and mind it temporarily inhabits, pointing to an identity far wider than any single situation or role.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "Zoomed out, how much space does today's worry actually take up?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "The Obstacle Is the Way",
+    "stoic_theme": "Marcus Aurelius observed that what blocks an action can become part of the action — an obstacle in the path often becomes the path, once we stop treating it as pure loss and start treating it as raw material.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 5",
+    "verse_ref": "Bhagavad Gita 18.48",
+    "verse_paraphrase": "Krishna says every undertaking carries some flaw, the way fire comes wrapped in smoke — and that this is a reason to keep doing the work well, not a reason to abandon it.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What flawed-but-worth-doing task have you been avoiding because it isn't clean?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "Virtue as the Sole Good",
+    "stoic_theme": "The early Stoics held that character — wisdom, courage, justice, self-control — is the only thing genuinely good, and that everything else commonly prized (wealth, health, reputation) is 'preferred' but not what makes a life good or bad.",
+    "stoic_source_ref": "Stoic doctrine as transmitted through Epictetus's teaching",
+    "verse_ref": "Srimad Devi Bhagavatam 7.36",
+    "verse_paraphrase": "The Goddess links right conduct and inner cultivation directly to devotion, treating an ethical life itself as a form of worship rather than a separate obligation.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "Where today did you treat something external as more important than your own conduct?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Voluntary Discomfort",
+    "stoic_theme": "Seneca practiced deliberately living for short stretches as if poor — plain food, coarse clothes — so that hardship, if it ever came uninvited, would already be familiar rather than frightening.",
+    "stoic_source_ref": "Seneca, Letters to Lucilius (e.g. Letter 18)",
+    "verse_ref": "Bhagavad Gita 6.17",
+    "verse_paraphrase": "Krishna describes yoga as suited to one who is moderate in eating, recreation, and sleep — sorrow, he says, is destroyed for the one who lives with measure rather than excess.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where could you choose 'less' on purpose today, before life chooses it for you?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "The Inner Citadel",
+    "stoic_theme": "Marcus Aurelius described a 'ruling faculty' at the center of the self — the part that judges, chooses, and assents — that no external force can enter uninvited; it can be neglected, but it cannot be conquered from outside.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 8",
+    "verse_ref": "Bhagavad Gita 6.5",
+    "verse_paraphrase": "Krishna tells Arjuna to lift himself by his own effort, not to let himself sink, since the self can be either one's best friend or one's own worst enemy.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Today, was your own mind more your ally or your adversary?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "Cosmopolitanism",
+    "stoic_theme": "The Stoics described themselves as citizens of the world before citizens of any city or nation, holding that shared reason binds all people together more fundamentally than the borders that happen to separate them.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 4; Epictetus, Discourses",
+    "verse_ref": "Srimad Devi Bhagavatam 7.34",
+    "verse_paraphrase": "The Goddess teaches that the one Self underlies every being without exception, so the sense of a truly separate 'other' is, at the deepest level, a case of mistaken identity.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "Who did you treat as fundamentally 'other' today, and what would change if you didn't?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Sympatheia (Interconnectedness)",
+    "stoic_theme": "Marcus Aurelius saw the cosmos as a single organism whose parts — including other people — are built to work together, so acting against another person is, in a real sense, acting against a part of oneself.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 2",
+    "verse_ref": "Bhagavad Gita 6.29",
+    "verse_paraphrase": "Krishna describes the practiced yogi as one who sees the Self present equally in all beings, and all beings equally within the Self, no longer drawing a hard line between 'self' and 'other'.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where today could you have acted with the other person's interest as your own?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "Freedom Through Limiting Desire",
+    "stoic_theme": "Epictetus taught that wanting fewer things, and wanting only what is truly within reach, is what makes a person free — desire aimed at what's beyond our control guarantees frustration no matter how things turn out.",
+    "stoic_source_ref": "Epictetus, Enchiridion 2",
+    "verse_ref": "Srimad Devi Bhagavatam 7.35",
+    "verse_paraphrase": "The Goddess describes yoga as steadiness of mind through the pull of opposites — pleasure and pain, gain and loss — achieved by no longer craving one side of each pair over the other.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "What are you craving right now that, if released, would loosen its grip on you?"
+  }
+]
