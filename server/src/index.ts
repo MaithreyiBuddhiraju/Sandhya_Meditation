@@ -4,6 +4,7 @@ import express from "express";
 import { seedPairings } from "./db/seed/seedPairings.js";
 import { journalRouter } from "./routes/journal.js";
 import { pairingsRouter } from "./routes/pairings.js";
+import { settingsRouter } from "./routes/settings.js";
 import { streakRouter } from "./routes/streak.js";
 import { thoughtsRouter } from "./routes/thoughts.js";
 
@@ -23,6 +24,7 @@ app.use("/api/pairings", pairingsRouter);
 app.use("/api/journal", journalRouter);
 app.use("/api/streak", streakRouter);
 app.use("/api/thoughts", thoughtsRouter);
+app.use("/api/settings", settingsRouter);
 
 app.listen(port, () => {
   console.log(`Sandhya server listening on http://localhost:${port}`);

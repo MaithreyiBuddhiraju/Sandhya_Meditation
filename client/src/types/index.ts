@@ -61,3 +61,8 @@ export interface SortedThought {
   outcome_recorded_at: string | null;
   updated_at: string;
 }
+
+export interface Settings {
+  tradition_preference: TraditionPreference;
+  ai_configured: boolean;
+}

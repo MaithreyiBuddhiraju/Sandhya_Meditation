@@ -1,5 +1,11 @@
 export type Bucket = "full_control" | "partial_control" | "no_control";
 
+export const BUCKET_LABELS: Record<Bucket, string> = {
+  full_control: "Fully in my control",
+  partial_control: "Partially in my control",
+  no_control: "Not in my control",
+};
+
 export interface BucketReframe {
   stoic_reframe: string;
   stoic_concept_ref: string;
