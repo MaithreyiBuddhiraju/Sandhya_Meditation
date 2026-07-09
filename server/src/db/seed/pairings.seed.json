@@ -128,5 +128,205 @@
     "verse_paraphrase": "The Goddess describes yoga as steadiness of mind through the pull of opposites — pleasure and pain, gain and loss — achieved by no longer craving one side of each pair over the other.",
     "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
     "bridge_prompt": "What are you craving right now that, if released, would loosen its grip on you?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Askesis: Training the Mind Like an Athlete",
+    "stoic_theme": "Epictetus treated philosophy as a discipline to be trained the way an athlete trains a body — through repeated practice, not through insight alone, since knowing the right thing to do is not the same as being able to do it under pressure.",
+    "stoic_source_ref": "Epictetus, Discourses 3.12",
+    "verse_ref": "Bhagavad Gita 6.35",
+    "verse_paraphrase": "Krishna agrees with Arjuna that the mind is genuinely hard to control and restless, but insists it can still be mastered — through steady practice and by loosening its grip on outcomes.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What's one small, repeatable practice — not a single act of willpower — that would actually change how you respond?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Only the Present Moment Can Be Lost",
+    "stoic_theme": "Marcus Aurelius pointed out that no one loses any life but the one they are living right now — the past is already gone and the future isn't yet ours, so worrying about losing 'more' time than this moment is a kind of category error.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 2",
+    "verse_ref": "Bhagavad Gita 2.22",
+    "verse_paraphrase": "Krishna compares the self to someone who sets aside worn-out clothes for new ones — the body changes and ends, but this is described as a natural passing-on rather than a true loss.",
+    "translation_source_note": "Paraphrase informed by Telang (1882) and Arnold (1885); verify against a preferred edition.",
+    "bridge_prompt": "What are you treating as a bigger loss than it actually is, measured against only what's real: this moment?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Understanding Others' Errors as Ignorance, Not Malice",
+    "stoic_theme": "Marcus Aurelius reminded himself each morning that he would meet people who act badly out of ignorance of what is truly good, not out of genuine malice — which made it easier to respond without matching their agitation.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 2",
+    "verse_ref": "Bhagavad Gita 3.27",
+    "verse_paraphrase": "Krishna explains that all action is really carried out by the underlying qualities of nature, while a person confused by ego mistakenly believes 'I am the one doing this' — a kind of ignorance about how action actually arises.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where today did you assume malice where ignorance or conditioning was the more likely explanation?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Living According to Nature",
+    "stoic_theme": "The early Stoics, following Zeno, held that a good life means living in agreement with nature — understanding how things truly work, including our own nature as reasoning, social beings, and acting accordingly rather than against the grain of reality.",
+    "stoic_source_ref": "Zeno of Citium, as transmitted by Diogenes Laertius",
+    "verse_ref": "Bhagavad Gita 3.33",
+    "verse_paraphrase": "Krishna observes that even a wise person acts according to their own nature, since all beings follow their nature — and asks what good forcing restraint against it would really do.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where are you fighting your own nature today instead of working with it?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Preferred Indifferents",
+    "stoic_theme": "The Stoics taught that things like health, wealth, and reputation are 'indifferent' to a good life in the strict sense — worth preferring when available, but not what actually makes a life good or bad, which depends entirely on character.",
+    "stoic_source_ref": "Stoic doctrine, as taught by Epictetus",
+    "verse_ref": "Bhagavad Gita 2.38",
+    "verse_paraphrase": "Krishna tells Arjuna to hold pleasure and pain, gain and loss, victory and defeat as equal, and then engage fully in the task at hand — acting this way, he says, incurs no wrongdoing.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Which outcome today have you been treating as 'good or bad' that's really just preferred or not?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "The Role We're Given",
+    "stoic_theme": "Epictetus compared life to a play where we don't choose our role — short or long, rich or poor — but we are fully responsible for how well we play the part we've actually been given.",
+    "stoic_source_ref": "Epictetus, Enchiridion 17",
+    "verse_ref": "Bhagavad Gita 18.47",
+    "verse_paraphrase": "Krishna teaches that it is better to do one's own duty imperfectly than to do another's duty well, since acting in line with one's own nature does not bring the same fault.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Are you trying to play someone else's role today instead of your own, even a well-intentioned one?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Freedom From Fear of Others' Opinions",
+    "stoic_theme": "Epictetus taught that other people's judgments of us are not up to us and therefore not worth the anxiety we give them — a free person is measured by their own standards, not by staying popular.",
+    "stoic_source_ref": "Epictetus, Discourses 1",
+    "verse_ref": "Bhagavad Gita 12.19",
+    "verse_paraphrase": "Krishna describes the person dear to him as one who is the same in honor and dishonor, unmoved equally by praise and blame.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Whose opinion are you giving more authority over your choices today than it deserves?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "The Impermanence of All Things",
+    "stoic_theme": "Marcus Aurelius pictured time as a river sweeping everything along, with each new thing barely arriving before it is carried off and replaced — a reminder that clinging to any fixed state is already out of step with how things work.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 4",
+    "verse_ref": "Bhagavad Gita 2.28",
+    "verse_paraphrase": "Krishna describes beings as unseen before birth, seen for a while in between, and unseen again after death — asking why this ordinary pattern should be a cause for grief.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What are you gripping tightly today that was always going to be temporary?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Duty to the Common Good",
+    "stoic_theme": "Marcus Aurelius reasoned that whatever harms the community ultimately harms its members too, since a person is part of a larger whole the way a limb is part of a body — so acting for the common good is really acting in one's own genuine interest.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 6",
+    "verse_ref": "Bhagavad Gita 3.20",
+    "verse_paraphrase": "Krishna points to figures like Janaka who reached fulfillment through action alone, and urges Arjuna to act with an eye toward holding the world together.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What's one action today that would serve the wider group, not just your own immediate interest?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Contentment With What One Has",
+    "stoic_theme": "The Stoics practiced treating whatever came their way — welcome or not — as enough, cultivating contentment as a discipline rather than waiting for circumstances to arrange themselves favorably first.",
+    "stoic_source_ref": "Epictetus and Seneca, on contentment",
+    "verse_ref": "Bhagavad Gita 4.22",
+    "verse_paraphrase": "Krishna describes one who is content with whatever comes without seeking it, who has moved beyond the pull of opposites and is free of envy, remaining steady in both success and failure.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What do you already have today that would count as 'enough' if you let it?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "The Inner Freedom of Choice",
+    "stoic_theme": "Epictetus located true freedom in what he called prohairesis — the faculty of choice itself — arguing that this alone can never be taken from a person by force, even when everything external is stripped away.",
+    "stoic_source_ref": "Epictetus, Discourses 1.1",
+    "verse_ref": "Bhagavad Gita 18.63",
+    "verse_paraphrase": "Having laid out his teaching in full, Krishna tells Arjuna to reflect on it completely and then act as he himself chooses — leaving the final decision to Arjuna's own will.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where today is the real choice still entirely yours, no matter what else is happening around you?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Enduring Pain and Hardship with Equanimity",
+    "stoic_theme": "Epictetus treated illness and physical hardship as tests that reveal whether one's philosophy is real — the body can be constrained, he argued, without the mind's own composure needing to be disturbed along with it.",
+    "stoic_source_ref": "Epictetus, Discourses 1.18",
+    "verse_ref": "Bhagavad Gita 6.23",
+    "verse_paraphrase": "Krishna defines yoga in part as the state of being disconnected from union with suffering — a severance from pain, known by this name.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where is discomfort today asking to be endured steadily, rather than escaped immediately?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Self-Discipline Over Pleasure",
+    "stoic_theme": "The Stoics treated attraction and aversion to sensory pleasure as natural forces that, left unchecked, quietly run a person's life — so self-discipline meant noticing that pull rather than being run by it.",
+    "stoic_source_ref": "Stoic doctrine, on temperance",
+    "verse_ref": "Bhagavad Gita 3.34",
+    "verse_paraphrase": "Krishna warns that attraction and aversion toward sense objects sit in the senses themselves, and one should not fall under their control, since they act as obstacles on the path.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where today did a small pull toward or away from something quietly make a decision for you?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Courage in the Face of Adversity",
+    "stoic_theme": "The Stoics counted courage among the core virtues — not the absence of fear, but the refusal to let fear or weakness of heart be the deciding factor in what one does.",
+    "stoic_source_ref": "Stoic doctrine, on courage as a cardinal virtue",
+    "verse_ref": "Bhagavad Gita 2.3",
+    "verse_paraphrase": "Krishna tells Arjuna not to give in to unmanly weakness, urging him to cast off this faintheartedness and rise to meet what is in front of him.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "What is fear quietly talking you out of today that courage would still do?"
+  },
+  {
+    "tradition": "gita",
+    "stoic_concept": "Guarding Attention Like a Sentry",
+    "stoic_theme": "The Stoic practice of prosoche meant keeping careful watch over one's own attention moment to moment, the way a guard stays alert at a post — since a wandering, unwatched mind is where trouble quietly gets in.",
+    "stoic_source_ref": "Epictetus and later Stoic practice, prosoche (attention)",
+    "verse_ref": "Bhagavad Gita 6.26",
+    "verse_paraphrase": "Krishna instructs that whenever the restless, unsteady mind wanders off, it should be gently brought back and settled under one's own watchful control.",
+    "translation_source_note": "Paraphrase informed by Telang (1882); verify against a preferred edition.",
+    "bridge_prompt": "Where has your attention wandered off today without your noticing until just now?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "The Shortness of Life",
+    "stoic_theme": "Seneca argued that life is not actually short — we simply waste much of it on distraction and postponement, so that by the time we go looking for the time to truly live, most of it is already gone.",
+    "stoic_source_ref": "Seneca, On the Shortness of Life",
+    "verse_ref": "Srimad Devi Bhagavatam 7.32",
+    "verse_paraphrase": "The Devi Gita section describes Maya, the Goddess's power of illusion, as what makes the fleeting seem lasting — the same confusion that lets time slip by unnoticed as though it were unlimited.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "What have you been postponing as though you had unlimited time for it?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "The Discipline of Desire",
+    "stoic_theme": "Epictetus separated desire and aversion from action, arguing that most unhappiness comes from desiring things outside our control — the discipline is in redirecting desire itself toward only what is genuinely up to us.",
+    "stoic_source_ref": "Epictetus, Enchiridion 2",
+    "verse_ref": "Srimad Devi Bhagavatam 7.37",
+    "verse_paraphrase": "The Devi Gita presents right desire and non-attachment together as part of the same discipline — wanting rightly and holding loosely are taught as two sides of one practice.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "What desire today would be worth redirecting rather than simply indulging or suppressing?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "The Sage's Equanimity Amid Praise and Blame",
+    "stoic_theme": "The Stoic ideal of the sage was someone whose composure did not rise and fall with others' approval — praised or criticized, the sage's inner state stayed essentially the same.",
+    "stoic_source_ref": "Stoic doctrine, the ideal of the sage (apatheia)",
+    "verse_ref": "Srimad Devi Bhagavatam 7.38",
+    "verse_paraphrase": "The Devi Gita describes the steady devotee as one whose mind holds its ground regardless of outer circumstance, neither lifted by favor nor shaken by its absence.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "Whose praise or criticism moved you today more than it should have?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "Voluntary Simplicity",
+    "stoic_theme": "Seneca and Epictetus both practiced deliberately needing less — not as deprivation, but because wanting less leaves less for fear and circumstance to threaten.",
+    "stoic_source_ref": "Seneca and Epictetus, on simple living",
+    "verse_ref": "Srimad Devi Bhagavatam 7.39",
+    "verse_paraphrase": "The Devi Gita's guidance on disciplined, modest living treats simplicity of habit as a direct support for inner steadiness, not as a hardship to endure.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "What could you need less of today, on purpose, to have less for circumstance to threaten?"
+  },
+  {
+    "tradition": "devi_bhagavatam",
+    "stoic_concept": "Humility Before the Whole",
+    "stoic_theme": "Marcus Aurelius found steadiness in remembering he was one small part of a vast, ordered whole — not the center of it — and that accepting this place honestly was itself a source of peace rather than diminishment.",
+    "stoic_source_ref": "Marcus Aurelius, Meditations, Book 5",
+    "verse_ref": "Srimad Devi Bhagavatam 7.40",
+    "verse_paraphrase": "The Devi Gita's concluding teaching frames surrender to the larger cosmic order not as a loss of self, but as the resolution the entire teaching has been building toward.",
+    "translation_source_note": "Paraphrase informed by Swami Vijnanananda's 1921-23 translation; chapter-level citation only — verify exact shloka before treating as precise.",
+    "bridge_prompt": "Where today would accepting your actual place in things — no bigger, no smaller — bring relief?"
   }
 ]
