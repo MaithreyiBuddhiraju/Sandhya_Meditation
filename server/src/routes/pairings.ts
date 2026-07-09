@@ -13,8 +13,13 @@ export const pairingsRouter = Router();
 
 pairingsRouter.get(
   "/today",
-  asyncHandler(async (_req, res) => {
-    const pairing = await getTodaysPairing();
+  asyncHandler(async (req, res) => {
+    const date = req.query.date as string | undefined;
+    if (!date) {
+      res.status(400).json({ error: "date query parameter is required." });
+      return;
+    }
+    const pairing = await getTodaysPairing(date);
     if (!pairing) {
       res.status(404).json({ error: "No pairings available." });
       return;

@@ -36,8 +36,16 @@ function dayOfYear(date: Date): number {
  * Cycles through pairings by (day-of-year - 1) % count, ordered by id.
  * Filters by tradition first when the preference isn't 'both', so each
  * tradition's own cycle lengthens independently as pairings are added.
+ *
+ * dateStr is the client-local YYYY-MM-DD date — never inferred from the
+ * server clock, since a serverless function's clock runs in UTC and would
+ * drift a pairing behind for users east of UTC until the server's day rolls
+ * over. Parsed into local Date components (not `new Date(isoString)`, which
+ * parses as UTC) so dayOfYear reflects the client's actual calendar day.
  */
-export async function getTodaysPairing(date: Date = new Date()): Promise<Pairing | null> {
+export async function getTodaysPairing(dateStr: string): Promise<Pairing | null> {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
   const preference = await getTraditionPreference();
   const whereClause = preference !== "both" ? "WHERE tradition = :tradition" : "";
   const args: Record<string, string | number> =

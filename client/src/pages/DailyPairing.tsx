@@ -34,7 +34,7 @@ export function DailyPairing() {
 
     async function load() {
       try {
-        const todaysPairing = await pairingsApi.getToday();
+        const todaysPairing = await pairingsApi.getToday(today);
         if (cancelled) return;
         setPairing(todaysPairing);
 

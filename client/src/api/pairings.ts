@@ -14,6 +14,6 @@ export interface NewPairing {
 }
 
 export const pairingsApi = {
-  getToday: () => apiClient.get<Pairing>("/pairings/today"),
+  getToday: (date: string) => apiClient.get<Pairing>(`/pairings/today?date=${date}`),
   create: (pairing: NewPairing) => apiClient.post<Pairing>("/pairings", pairing),
 };
