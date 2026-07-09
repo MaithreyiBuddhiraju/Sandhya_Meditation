@@ -23,16 +23,16 @@
 }
 
 .thought-card__bucket-badge--full_control {
-  color: var(--saffron-400);
-  border-color: var(--saffron-500);
+  color: var(--saffron-600);
+  border-color: var(--saffron-600);
 }
 .thought-card__bucket-badge--partial_control {
-  color: var(--gold-300);
-  border-color: var(--gold-400);
+  color: var(--gold-600);
+  border-color: var(--gold-600);
 }
 .thought-card__bucket-badge--no_control {
-  color: var(--lavender-300);
-  border-color: var(--lavender-400);
+  color: var(--indigo-700);
+  border-color: var(--indigo-700);
 }
 
 .thought-card__worry {

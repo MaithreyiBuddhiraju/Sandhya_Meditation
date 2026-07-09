@@ -1,38 +1,43 @@
 /*
   Sandhya dawn/dusk palette — evokes the twilight junctures the app is named
-  for. Dark, calm base (deep indigo) with warm saffron/gold accents standing
-  in for the sun at the horizon. Serif type is reserved for scripture and
-  Stoic text; UI chrome stays in a clean system sans stack.
+  for. Light, airy blue base (a pale sky rather than the deep night) with
+  warm saffron/gold accents standing in for the sun at the horizon. Serif
+  type is reserved for scripture and Stoic text; UI chrome stays in a clean
+  system sans stack.
 */
 :root {
-  /* Indigo — background, calm depth */
-  --indigo-950: #14132b;
-  --indigo-900: #1c1a3f;
-  --indigo-800: #29255c;
-  --indigo-700: #383178;
+  /* Blue — background, open and calm rather than deep */
+  --blue-50: #eef2fb;
+  --blue-100: #ffffff;
+  --blue-200: #e2e9f7;
+  --blue-300: #c7d3ec;
 
-  /* Saffron / gold — accents, the "dawn" in Sandhya */
-  --saffron-500: #f0973f;
-  --saffron-400: #f4b169;
-  --gold-400: #e8c170;
-  --gold-300: #f0d497;
+  /* Indigo — text, dark enough to read clearly on the light blue base */
+  --indigo-900: #262b52;
+  --indigo-700: #454b7c;
 
-  /* Warm neutrals — text on the indigo base */
-  --cream-100: #f7f1e6;
-  --cream-200: #efe6d3;
-  --lavender-300: #b7b2d6;
-  --lavender-400: #8f89b8;
+  /* Saffron / gold — accents, the "dawn" in Sandhya, deepened a touch from
+     the dark-theme originals so they hold contrast against a light page */
+  --saffron-600: #d9762a;
+  --saffron-500: #e8934a;
+  --gold-600: #b8862e;
+  --gold-400: #d9ac52;
+
+  /* Cool neutrals — muted text, and the "not in my control" bucket's identity */
+  --slate-500: #5f6785;
+  --slate-400: #8790ac;
 
   /* Semantic aliases */
-  --color-bg: var(--indigo-950);
-  --color-surface: var(--indigo-900);
-  --color-surface-raised: var(--indigo-800);
-  --color-border: var(--indigo-700);
-  --color-accent: var(--saffron-500);
-  --color-accent-soft: var(--gold-400);
-  --color-text: var(--cream-100);
-  --color-text-muted: var(--lavender-300);
-  --color-text-faint: var(--lavender-400);
+  --color-bg: var(--blue-50);
+  --color-surface: var(--blue-100);
+  --color-surface-raised: var(--blue-200);
+  --color-border: var(--blue-300);
+  --color-accent: var(--saffron-600);
+  --color-accent-soft: var(--gold-600);
+  --color-text: var(--indigo-900);
+  --color-text-muted: var(--slate-500);
+  --color-text-faint: var(--slate-400);
+  --color-error: #b3413a;
 
   /* Typography */
   --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", serif;
@@ -50,5 +55,5 @@
   /* Shape */
   --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
-  --shadow-card: 0 8px 24px rgba(20, 19, 43, 0.35);
+  --shadow-card: 0 4px 20px rgba(38, 43, 82, 0.1);
 }

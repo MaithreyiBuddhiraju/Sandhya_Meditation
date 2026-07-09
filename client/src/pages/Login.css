@@ -47,7 +47,7 @@
 
 .login-card__error {
   font-size: 0.8125rem;
-  color: #e5a3a3;
+  color: var(--color-error);
   margin: 0 0 var(--space-4);
 }
 

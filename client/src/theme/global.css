@@ -81,7 +81,7 @@ textarea {
 .button-primary {
   display: inline-block;
   background: var(--color-accent);
-  color: var(--indigo-950);
+  color: #ffffff;
   border: none;
   border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-6);
@@ -97,7 +97,7 @@ textarea {
 }
 
 .button-primary:hover:not(:disabled) {
-  background: var(--saffron-400);
+  background: var(--saffron-500);
 }
 
 .text-muted {

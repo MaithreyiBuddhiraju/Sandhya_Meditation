@@ -38,5 +38,5 @@
 }
 
 .reflection-card__status--error {
-  color: #e5a3a3;
+  color: var(--color-error);
 }

@@ -25,7 +25,7 @@
 
 .weekly-digest__error {
   font-size: 0.8125rem;
-  color: #e5a3a3;
+  color: var(--color-error);
   margin: var(--space-2) 0 0;
 }
 
