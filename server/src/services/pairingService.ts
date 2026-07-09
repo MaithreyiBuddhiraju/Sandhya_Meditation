@@ -26,10 +26,18 @@ async function getTraditionPreference(): Promise<TraditionPreference> {
     .tradition_preference;
 }
 
+/**
+ * Diffing two local Date objects' getTime() values is not DST-safe: a
+ * transition (e.g. "spring forward") between Jan 1 and the target date
+ * makes the elapsed real time slightly less than N whole days, undercounting
+ * by one. Date.UTC() sidesteps this — it maps the same calendar y/m/d to a
+ * UTC timestamp, which never observes DST, so the diff is always an exact
+ * multiple of 86,400,000ms regardless of the runtime's local timezone.
+ */
 function dayOfYear(date: Date): number {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date.getTime() - start.getTime();
-  return Math.floor(diff / 86_400_000);
+  const utcTarget = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+  const utcStart = Date.UTC(date.getFullYear(), 0, 1);
+  return Math.floor((utcTarget - utcStart) / 86_400_000) + 1;
 }
 
 /**
